@@ -1,0 +1,114 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8">
+    <link rel="stylesheet" type="text/css" href="${cssPath}">
+    <title>Preview</title>
+    ${customStyle}
+    
+
+</head>
+
+<body>
+    <div class="ux-section-banner ux-section-banner-custom-bg ">
+        <div class="ux-section-core gallery-centered-content ">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="item-img">
+                            ${image}
+                        </td>
+                        <td class="item-header ">
+                            <div class="item-header-content ">
+                                <h1><span class="ux-item-name ux-section-banner-custom-bg">${displayName}</span></h1>
+                                ${preview}
+                                <span class="ux-item-preview "></span>
+                                <div class="ux-item-second-row-wrapper ">
+                                    <div class="ux-item-publisher ">
+                                        <h2><a class="ux-item-publisher-link ux-section-banner-custom-bg ">${publisher}</a></h2>
+                                    </div>
+                                </div>
+                                <div class="ux-item-shortdesc  ux-section-banner-custom-bg">${description}</div>
+                                <div class="ux-item-action ux-section-banner-custom-bg">
+                                    ${installation}
+                                </div>
+                            </div>
+                        </td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <div class="gallery-centered-content gallery-centered-content-custom-bg ">
+        <div class="ux-section-details">
+            <table>
+                <tbody>
+                    <tr>
+                        <td class="ux-itemdetails-left">
+                            <div class="markdown">
+                                ${markdownHtmlOutput}
+                            </div>
+                            <br>
+                        </td>
+                        <td class="ux-itemdetails-right" role="complementary">
+                            <div class="ux-section-media">
+                                ${screenshot}
+                            </div>
+                            <div class="meta-data-list-holder">
+                                <div class="meta-data-list-container">
+                                    <div>
+                                        ${categories} ${tags}                                         
+                                    </div>
+                                </div>
+                                ${resources}
+                                ${projectDetails}
+                                <div class="ux-section-other">
+                                    <div class="ux-section-h1 right" ">More Info</div>
+                                                    <div>
+                                                        <table class="ux-table-metadata ">
+                                                            <tbody>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div >Version</div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div >${version}</div>
+                                                                    </td>
+                                                                </tr>
+                                                                <tr>
+                                                                    <td>
+                                                                        <div >Publisher</div>
+                                                                    </td>
+                                                                    <td>
+                                                                        <div >${publisher}</div>                                                    
+                                                                    </td>
+                                                                </tr>                                            
+                                                            </tbody>
+                                                        </table>
+                                                    </div>  
+                                                    <span class="ux-social-icons ">
+                                                        <span>
+                                                            <div class="item-share-container ">
+                                                                <a title="twitter " href=" " target=" ">
+                                                                    <div class="social-link share-twitter-button "></div>
+                                                                </a>
+                                                                <a title="facebook " href=" " target=" ">
+                                                                    <div class="social-link share-facebook-button "></div>
+                                                                </a>
+                                                                <a  title="email " href=" " target=" ">
+                                                                    <div class="social-link share-email-button "></div>
+                                                                </a>
+                                                            </div>
+                                                        </span>
+                                                    </span>                        
+                                                </div>
+                                            </td>
+                                        </tr>
+                                    </tbody>
+                                </table>
+                            </div>
+                        </div> 
+                    </div>
+                </body>
+            </html>

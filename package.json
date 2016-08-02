@@ -1,0 +1,66 @@
+{
+    "name": "extension-manifest-editor",
+    "displayName": "Extension Manifest Editor",
+    "description": "Generates preview of the details page",
+    "version": "0.0.1",
+    "publisher": "ms-devlabs",
+    "engines": {
+        "vscode": "^1.0.0"
+    },
+    "categories": [
+        "Other"
+    ],
+    "icon": "Resources/Images/icon.png",
+    "galleryBanner": {
+        "color": "#ffcc22",
+        "theme": "light"
+    },   
+
+    
+    "activationEvents": [
+        "workspaceContains:package.json",
+        "workspaceContains:vss-extension.json",
+        "onCommand:extension.generatePreview"
+    ],
+    "main": "./out/src/main",
+    "contributes": {
+        "commands": [
+            {
+                "command": "extension.generateSidePreview",
+                "title": "Side Preview of Details Page"
+            },
+            {
+                "command": "extension.generateStandalonePreview",
+                "title": "Standalone Preview of Details Page"
+            }
+        ],
+        "keybindings": [
+            {
+                "command": "extension.generateSidePreview",
+                "key": "ctrl+q y",
+                "mac": "cmd+q y",
+                "when": "editorTextFocus"
+            },
+            {
+                "command": "extension.generateStandalonePreview",
+                "key": "ctrl+shift+y",
+                "mac": "cmd+shift+y",
+                "when": "editorTextFocus"
+            }
+        ]
+    },
+    "scripts": {
+        "vscode:prepublish": "node ./node_modules/vscode/bin/compile",
+        "compile": "node ./node_modules/vscode/bin/compile -watch -p ./",
+        "postinstall": "node ./node_modules/vscode/bin/install",
+        "test": "node ./node_modules/vscode/bin/test"
+    },
+    "devDependencies": {
+        "typescript": "^1.8.5",
+        "vscode": "^0.11.0"
+    },
+    "dependencies": {
+        "marked": "^0.3.5",
+        "fs": "^0.0.2"
+    }
+}
