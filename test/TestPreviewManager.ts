@@ -11,7 +11,7 @@ import PreviewManagerVSC from '../src/PreviewManagerVSC'
 import PreviewManagerVSTS from '../src/PreviewManagerVSTS'
 import {ErrorMessages} from '../src/Constants'
 import {TestUtilities} from './TestUtilities'
-import BaseHtmlGenerator from '../src/BaseHtmlGenerator'
+import BaseHtmlGenerator from '../src/BaseHTMLGenerator'
 export function testPreviewManager(PM) {
     let previewManager: PreviewManagerVSC | PreviewManagerVSTS;
     beforeEach(function () {

@@ -6,7 +6,7 @@ const expect = require('chai').expect;
 const sinon = require('sinon');
 
 import * as vscode from 'vscode';
-import testHtmlGenerator from './TestHtmlgenerator'
+import testHtmlGenerator from './TestHtmlGenerator'
 import VstsHtmlGenerator from '../src/VstsHtmlGenerator'
 let expectedHTML: string;
 

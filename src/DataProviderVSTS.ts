@@ -5,7 +5,7 @@
 
 'use strict';
 import * as vscode from 'vscode';
-import {IDataProvider} from './IDataprovider'
+import {IDataProvider} from './IDataProvider'
 import BaseDataProvider from './BaseDataProvider'
 
 export default class DataProviderVSTS extends BaseDataProvider {
