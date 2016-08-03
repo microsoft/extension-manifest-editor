@@ -1,3 +1,8 @@
+/* --------------------------------------------------------------------------------------------
+ * Copyright (c) Microsoft Corporation. All rights reserved.
+ * Licensed under the MIT License. See License.txt in the project root for license information.
+ * ------------------------------------------------------------------------------------------ */
+
 export module ExtensionConstants {    
     export const VSC_EXTENSION: number = 1;
     export const VSTS_EXTENSION: number = 2;
