@@ -17,6 +17,8 @@ before_install:
 
 install:
   - npm install
+  - npm install fs -g
+  - npm install marked -g
   - npm run vscode:prepublish
 
 script:

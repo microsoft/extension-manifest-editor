@@ -3,7 +3,7 @@ export module ExtensionConstants {
     export const VSTS_EXTENSION: number = 2;
     export const NO_EXTENSION: number = 0;
     export var EXTENSION_TYPE: number = NO_EXTENSION;
-    export const EXTENSION_ID = `hdgiitd.extension-manifest-editor`
+    export const EXTENSION_ID = `ms-devlabs.extension-manifest-editor`
     export const PREVIEW_URI = 'details-preview://authority/detailspreview';
 }
 

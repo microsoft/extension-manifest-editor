@@ -38,8 +38,7 @@ export default class BaseDataProvider implements IDataProvider {
         this.homepage = "";
         this.repository = "";
         this.preview = "";
-    }
-    
+    }   
 
 
     public deserialize(input) : BaseDataProvider{

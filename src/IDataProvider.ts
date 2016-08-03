@@ -1,6 +1,4 @@
 
-
-
 export interface IDataProvider {
 
     // Fields
