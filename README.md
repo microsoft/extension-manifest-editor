@@ -14,7 +14,8 @@ This extension lets you preview the details page for your extension from within 
 ![IDE](Standalone_Preview.gif)
 
 ## Usage
-Open the manifest file for your extension (`package.json` for Visual Studio Code extensions and `vsc-extension.json` for Team Services extensions).
+Open extension project from the root folder in vscode.
+Navigate to the manifest file for your extension (`package.json` for Visual Studio Code extensions and `vsc-extension.json` for Team Services extensions).
 - For side by side preview, either use the keybinding `ctrl+q y` or Press `F1`, type `side preview of details page` and hit return
 - For standalone preview, either use the keybinding `ctrl+shift+y` or Press `F1`, type `standalone preview of details page` and hit return
 
