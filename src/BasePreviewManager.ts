@@ -149,7 +149,7 @@ export default class BasePreviewManager implements vscode.TextDocumentContentPro
         let readmePathURI: vscode.Uri = this.getReadMePathURI();
         return new Promise<string>(function (resolve, reject) {
             //Read the markdown if the current open file is a readme file
-            if (self.utilities.isActive(self.packageData.readMePath)) {
+            if ( self.packageData.readMePath !=""  && self.utilities.isActive(self.packageData.readMePath)) {
 
                 let data = vscode.window.activeTextEditor.document.getText();
                 self.markdownHtmlOutput = self.convertMDtoHTML(data);

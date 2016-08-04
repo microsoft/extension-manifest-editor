@@ -1,7 +1,7 @@
 {
     "name": "extension-manifest-editor",
     "displayName": "Extension Manifest Editor",
-    "description": "Generates preview of the details page",
+    "description": "Preview how your extension appears on the Marketplace.",
     "version": "0.0.1",
     "publisher": "ms-devlabs",
     "engines": {
