@@ -31,11 +31,11 @@
         "commands": [
             {
                 "command": "extension.generateSidePreview",
-                "title": "Side Preview of Details Page"
+                "title": "Extension Manifest: Open Manifest Preview to the Side"
             },
             {
                 "command": "extension.generateStandalonePreview",
-                "title": "Standalone Preview of Details Page"
+                "title": "Extension Manifest: Open Manifest Preview"
             }
         ],
         "keybindings": [

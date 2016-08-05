@@ -74,7 +74,8 @@ export function testPreviewManager(PM) {
 
         it("should call generateHTML in the if block", sinon.test(function () {
             previewManager.packageData = TestUtilities.testPackage;
-            previewManager.packageData.readMePath = "";
+            let isActiveStub = this.stub(previewManager.utilities, "isActive", function () { return true });
+            previewManager.packageData.readMePath = "readme.md";
             let convertMDtoHTMLStub = this.stub(previewManager, "convertMDtoHTML")
 
             previewManager.getReadMe().then(function (message) {
@@ -83,6 +84,7 @@ export function testPreviewManager(PM) {
             })
         }))
         it("should return NO_README error", sinon.test(function () {
+            let isActiveStub = this.stub(previewManager.utilities, "isActive", function () { return false });
             previewManager.packageData = TestUtilities.testPackage;
             previewManager.packageData.readMePath = "NO_README";
             previewManager.getReadMe().then(function (message) {
