@@ -15,6 +15,13 @@
     "categories": [
         "Other"
     ],
+   	"badges": [ 
+            { 
+                "url": "https://travis-ci.com/Microsoft/extension-manifest-editor.svg?token=sftJYMdqpV4cdsnpzze8&branch=master", 
+                "href": "https://travis-ci.com/Microsoft/extension-manifest-editor", 
+                "description": "Travis CI build" 
+            }
+    ],
     "icon": "Resources/Images/icon.png",
     "galleryBanner": {
         "color": "#ffcc22",
