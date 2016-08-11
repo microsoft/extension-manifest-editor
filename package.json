@@ -2,7 +2,7 @@
     "name": "extension-manifest-editor",
     "displayName": "Extension Manifest Editor",
     "description": "Preview how your extension appears on the Marketplace.",
-    "version": "0.0.1",
+    "version": "0.1.1",
     "publisher": "ms-devlabs",
     "engines": {
         "vscode": "^1.0.0"
@@ -17,8 +17,8 @@
     ],
    	"badges": [ 
             { 
-                "url": "https://travis-ci.com/Microsoft/extension-manifest-editor.svg?token=sftJYMdqpV4cdsnpzze8&branch=master", 
-                "href": "https://travis-ci.com/Microsoft/extension-manifest-editor", 
+                "url": "https://travis-ci.org/Microsoft/extension-manifest-editor.svg?branch=master", 
+                "href": "https://travis-ci.org/Microsoft/extension-manifest-editor", 
                 "description": "Travis CI build" 
             }
     ],
@@ -49,13 +49,11 @@
             {
                 "command": "extension.generateSidePreview",
                 "key": "ctrl+q y",
-                "mac": "cmd+q y",
                 "when": "editorTextFocus"
             },
             {
                 "command": "extension.generateStandalonePreview",
                 "key": "ctrl+shift+y",
-                "mac": "cmd+shift+y",
                 "when": "editorTextFocus"
             }
         ]
