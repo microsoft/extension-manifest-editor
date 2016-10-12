@@ -12,8 +12,9 @@ export default class VscHtmlGenerator extends BaseHTMLGenerator {
     constructor() {
         super();
         
-    }
-
+    }  
+    
+      
     protected updateHTML() {
         super.updateHTML();
         let installOptions: string = this.getInstallOptions();
