@@ -45,6 +45,9 @@ export default class DataProviderVSC extends BaseDataProvider {
                 this.repository = input.repository.url;
             }
         }
+        if (input.homepage) {
+            this.homepage = input.homepage;
+        }
         if (input.bugs) {
             if (input.bugs.url) {
                 this.bugs = input.bugs.url;

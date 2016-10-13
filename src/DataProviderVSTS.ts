@@ -73,7 +73,7 @@ export default class DataProviderVSTS extends BaseDataProvider {
                     this.preview = "true";
                 }
             }
-        }
+        }        
         return this;
     }
 }
