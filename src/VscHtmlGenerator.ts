@@ -15,13 +15,15 @@ export default class VscHtmlGenerator extends BaseHTMLGenerator {
     }
 
     protected updateHTML() {
-        super.updateHTML();
+        super.updateHTML(); 
+        let resources: string = this.getResources();
         let installOptions: string = this.getInstallOptions();
         let screenShot: string = this.getScreenShots();        
         // This array hold the key-value relations
         let dataMapArray: DataKeyValuePair[] = [
             new DataKeyValuePair("${installation}", installOptions),
             new DataKeyValuePair("${screenshot}", screenShot),
+            new DataKeyValuePair("${resources}", resources),
             
         ]
         //Replace the values in HTML template using the dataMapArray
@@ -51,6 +53,37 @@ export default class VscHtmlGenerator extends BaseHTMLGenerator {
                         </div>
                     </div>
                 </div>`
+    }
+
+     private getResources(): string {
+
+        let support = "";
+        let getStarted = "";
+        let homePage = "";
+        let license = "";
+        if (this.packageData.bugs) {
+            support = `<li><a href="" target="" rel="noreferrer noopener">Issues</a></li>`
+        }
+        if (this.packageData.repository) {
+            getStarted = `<li><a href="" target="" rel="noreferrer noopener">Repository</a></li>`
+        }
+        if (this.packageData.homepage) {
+            homePage = `<li><a href="" target="" rel="noreferrer noopener">HomePage</a></li>`
+        }
+        if (this.packageData.license) {
+            license = `<li><a href="" target="" rel="noreferrer noopener">License</a></li>`
+        }
+        return `<div class="ux-section-resources">                                    
+                    <div class="ux-section-h1 right">Resources</div>
+                        <div>
+                            <ul>
+                                ${support}
+                                ${getStarted}
+                                ${homePage}
+                                ${license}
+                            </ul>
+                        </div>
+                    </div>`
     }
 
     private getScreenShots(): string {

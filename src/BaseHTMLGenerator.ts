@@ -65,7 +65,6 @@ export default class BaseHtmlGenerator {
         let itemImage: string = this.getItemImage();
         let categories: string = this.getCategories();
         let tags: string = this.getTags();
-        let resources: string = this.getResources();
         let projectDetails: string = this.getProjectDetails();
         let preview: string = this.getPreviewDetails();
 
@@ -82,7 +81,6 @@ export default class BaseHtmlGenerator {
             new DataKeyValuePair("${version}", this.packageData.version),
             new DataKeyValuePair("${customStyle}", customStyles),
             new DataKeyValuePair("${tags}", tags),
-            new DataKeyValuePair("${resources}", resources),
             new DataKeyValuePair("${projectDetails}", projectDetails),
             new DataKeyValuePair("${preview}", preview),
         ]
@@ -155,33 +153,7 @@ export default class BaseHtmlGenerator {
                 </div>`
         }
         return "";
-    }
-
-    private getResources(): string {
-
-        let support = "";
-        let getStarted = "";
-        let license = "";
-        if (this.packageData.bugs) {
-            support = `<li><a href="" target="" rel="noreferrer noopener">Support</a></li>`
-        }
-        if (this.packageData.repository) {
-            getStarted = `<li><a href="" target="" rel="noreferrer noopener">Get Started</a></li>`
-        }
-        if (this.packageData.license) {
-            license = `<li><a href="" target="" rel="noreferrer noopener">License</a></li>`
-        }
-        return `<div class="ux-section-resources">                                    
-                    <div class="ux-section-h1 right">Resources</div>
-                        <div>
-                            <ul>
-                                ${support}
-                                ${getStarted}
-                                ${license}
-                            </ul>
-                        </div>
-                    </div>`
-    }
+    }    
 
     private getProjectDetails(): string {
         if (this.packageData.repository.includes("github.com")) {
