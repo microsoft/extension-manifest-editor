@@ -158,7 +158,7 @@ export default class BaseHtmlGenerator {
     private getProjectDetails(): string {
         if (this.packageData.repository.includes("github.com")) {
             let a = this.packageData.repository.search(".com");
-            let b = this.packageData.repository.length - 4;
+            let b = this.packageData.repository.length;
             let url: string = this.packageData.repository.substring(a + 4, b);
             return `<div class="ux-section-project-details">
                         <div class="ux-section-h1 right">Project Details</div>
@@ -174,7 +174,7 @@ export default class BaseHtmlGenerator {
                                     <a>${this.getOpenIssuesSVG()}<p># Open Issues</p></a>
                                 </li>
                                 <li>
-                                    <a>${this.getClockIconSVG()}<p># weeks ago since last commit</p></a>
+                                    <a>${this.getClockIconSVG()}<p>Last commit: # ago</p></a>
                                 </li>
                             </ul>
                         </div>
