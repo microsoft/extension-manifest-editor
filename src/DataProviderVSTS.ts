@@ -73,6 +73,11 @@ export default class DataProviderVSTS extends BaseDataProvider {
                     this.preview = "true";
                 }
             }
+        }
+        if (input.repository) {
+            if (input.repository.url) {
+                this.repository = input.repository.url;
+            }
         }        
         return this;
     }
