@@ -35,7 +35,7 @@ export default class DataProviderVSC extends BaseDataProvider {
         }
         if (input.icon) {
             let rootPath: string = vscode.workspace.rootPath;
-            this.imagePath = vscode.Uri.file(`${rootPath}/${input.icon}`).fsPath;
+            this.imagePath = vscode.Uri.file(`${rootPath}/${input.icon}`).toString();
         }
         if (input.license) {
             this.license = input.license;

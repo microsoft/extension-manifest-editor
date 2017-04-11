@@ -61,8 +61,8 @@ describe("DataProviderVSTS", function () {
             expect(VstsDP.license).to.equal(JSONObject.content.license.path);
             expect(VstsDP.readMePath).to.equal(JSONObject.content.details.path);
             let rootPath: string = vscode.workspace.rootPath;
-            expect(VstsDP.imagePath).to.equal(vscode.Uri.file(`${rootPath}/${ JSONObject.icons.default}`).fsPath);
-            expect(VstsDP.screenShots).to.equal(vscode.Uri.file(`${rootPath}/${JSONObject.screenshots[0].path}`).fsPath);
+            expect(VstsDP.imagePath).to.equal(vscode.Uri.file(`${rootPath}/${ JSONObject.icons.default}`).toString());
+            expect(VstsDP.screenShots).to.equal(vscode.Uri.file(`${rootPath}/${JSONObject.screenshots[0].path}`).toString());
             expect(VstsDP.targets).to.equal(JSONObject.targets[0].id);
 
         })
