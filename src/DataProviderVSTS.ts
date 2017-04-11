@@ -37,7 +37,7 @@ export default class DataProviderVSTS extends BaseDataProvider {
         if (input.icons) {
             if (input.icons.default) {
                 let rootPath: string = vscode.workspace.rootPath;
-                this.imagePath = vscode.Uri.file(`${rootPath}/${input.icons.default}`).fsPath;
+                this.imagePath = vscode.Uri.file(`${rootPath}/${input.icons.default}`).toString();
             }
         }
         if (input.content) {
@@ -56,7 +56,7 @@ export default class DataProviderVSTS extends BaseDataProvider {
             if (input.screenshots[0]) {
                 if (input.screenshots[0].path) {
                     let rootPath: string = vscode.workspace.rootPath;
-                    this.screenShots = vscode.Uri.file(`${rootPath}/${input.screenshots[0].path}`).fsPath;
+                    this.screenShots = vscode.Uri.file(`${rootPath}/${input.screenshots[0].path}`).toString();
                 }
             }
         }

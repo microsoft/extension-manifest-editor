@@ -52,7 +52,7 @@ describe("DataProviderVSC", function () {
             expect(VscDP.bugs).to.equal(JSONObject.bugs.url);
             expect(VscDP.readMePath).to.equal("readme.md");
             let rootPath: string = vscode.workspace.rootPath;
-            expect(VscDP.imagePath).to.equal(vscode.Uri.file(`${rootPath}/${ JSONObject.icon}`).fsPath);
+            expect(VscDP.imagePath).to.equal(vscode.Uri.file(`${rootPath}/${ JSONObject.icon}`).toString());
 
 
         })
