@@ -12,8 +12,7 @@ export default class VscHtmlGenerator extends BaseHTMLGenerator {
     constructor() {
         super();
         
-    }
-
+    }    
     protected updateHTML() {
         super.updateHTML(); 
         let resources: string = this.getResources();
