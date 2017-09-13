@@ -23,7 +23,7 @@ export function testPreviewManager(PM) {
             
             let makePreviewSpy = this.spy(previewManager,"makePreview");
             let getManifestSpy = this.spy(previewManager,"getManifest");
-            
+            let isActiveStub = this.stub(previewManager.utilities, "isActive", function () { return false }); 
             previewManager.generatePreview().then(function (data) {
 
                 expect(data).to.equal(ErrorMessages.NO_MANIFEST);

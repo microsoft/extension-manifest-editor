@@ -74,7 +74,11 @@ export default class Utilities {
     }
 
     docIsJSON(): boolean {
-        return vscode.window.activeTextEditor.document.languageId.localeCompare("json") == 0;
+        if(vscode.window.activeTextEditor)
+        {
+            return vscode.window.activeTextEditor.document.languageId.localeCompare("json") == 0;
+        }
+        return false;
     }
 
     getTextFromActiveEditor() {
@@ -86,9 +90,8 @@ export default class Utilities {
     }
 
     isActive(file) {
-        return vscode.window.activeTextEditor.document.fileName.toLowerCase().includes(file);
-    }
-
+            return vscode.window.activeTextEditor.document.fileName.toLowerCase().includes(file);
+    }    
 }
 
 

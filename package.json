@@ -2,32 +2,31 @@
     "name": "extension-manifest-editor",
     "displayName": "Extension Manifest Editor",
     "description": "Preview how your extension appears on the Marketplace.",
-    "version": "0.1.4",
+    "version": "0.1.5",
     "publisher": "ms-devlabs",
     "engines": {
         "vscode": "^1.0.0"
     },
     "license": "MIT",
     "repository": {
-		"type": "git",
-		"url": "https://github.com/Microsoft/extension-manifest-editor"
-	},
+        "type": "git",
+        "url": "https://github.com/Microsoft/extension-manifest-editor"
+    },
     "categories": [
         "Other"
     ],
-   	"badges": [ 
-            { 
-                "url": "https://travis-ci.org/Microsoft/extension-manifest-editor.svg?branch=master", 
-                "href": "https://travis-ci.org/Microsoft/extension-manifest-editor", 
-                "description": "Travis CI build" 
-            }
+    "badges": [
+        {
+            "url": "https://travis-ci.org/Microsoft/extension-manifest-editor.svg?branch=master",
+            "href": "https://travis-ci.org/Microsoft/extension-manifest-editor",
+            "description": "Travis CI build"
+        }
     ],
     "icon": "Resources/Images/icon.png",
     "galleryBanner": {
         "color": "#ffcc22",
         "theme": "light"
-    }, 
-    
+    },
     "activationEvents": [
         "workspaceContains:package.json",
         "workspaceContains:vss-extension.json",
@@ -66,12 +65,12 @@
     },
     "devDependencies": {
         "typescript": "^1.8.5",
-        "vscode": "^0.11.0",        
+        "vscode": "^0.11.0",
         "chai": "^3.5.0",
         "sinon": "^1.17.4"
     },
     "dependencies": {
-        "marked": "^0.3.5",
+        "markdown-it": "^8.1.0",
         "fs": "^0.0.2"
     }
 }

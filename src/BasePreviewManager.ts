@@ -13,7 +13,11 @@ import {IPreviewManager} from './IPreviewManager'
 import * as Constants from './Constants'
 import Utilities from './Utilities'
 
-const marked = require('marked');
+const marked = require('markdown-it')({
+    html: true,
+    linkify:true
+    });
+ 
 const fs = require('fs');
 
 
@@ -23,7 +27,7 @@ export default class BasePreviewManager implements vscode.TextDocumentContentPro
     public markdownHtmlOutput: string;
     protected rootPath: string;
     private _onDidChange: vscode.EventEmitter<vscode.Uri>;
-    private oldPreview: string;
+    public oldPreview: string;
     private oldJSON: string;
     public HTMLGenerator: IHtmlGenerator;
     public utilities: Utilities;
@@ -79,7 +83,7 @@ export default class BasePreviewManager implements vscode.TextDocumentContentPro
 
         let self = this;
         // if the active open window is .md type, then return the view with oldJSON"
-        if (self.utilities.isActive(".md")) {
+        if (vscode.window.activeTextEditor && self.utilities.isActive(".md")) {
             // Prepare the packageData
             this.deserializeJSON(this.oldJSON);
             // Read the README file 
@@ -92,7 +96,7 @@ export default class BasePreviewManager implements vscode.TextDocumentContentPro
             })
         }
         // Assume that the manifest file is open. Even if it is not opened , the following code just returns the oldPreview
-        else if (this.isManifestOpen()) {
+        else if (vscode.window.activeTextEditor && this.isManifestOpen()) {
             return this.getManifestFromActiveEditor();
         }
         else {
@@ -185,7 +189,7 @@ export default class BasePreviewManager implements vscode.TextDocumentContentPro
     }
 
     private convertMDtoHTML(md: string): string {
-        return marked(md, marked.markedOptions)
+        return marked.render(md)
     }
 
     
