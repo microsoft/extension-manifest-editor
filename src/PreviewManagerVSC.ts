@@ -22,6 +22,7 @@ export default class PreviewManagerVSC extends BasePreviewManager {
             self.HTMLGenerator = new VscHtmlGenerator();
             resolve(self.makePreview());
         }).then((promise) => {
+            self.oldPreview = promise; 
             return promise;
         }).catch(() => {
             return ErrorMessages.GENERATE_PREVIEW_ERROR;

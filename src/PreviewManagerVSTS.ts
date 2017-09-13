@@ -22,6 +22,7 @@ export default class PreviewManagerVSTS extends BasePreviewManager {
             self.HTMLGenerator = new VstsHtmlGenerator();
             resolve(self.makePreview());
         }).then((promise) => {
+            self.oldPreview = promise; 
             return promise;
         }).catch(() => {
             return ErrorMessages.GENERATE_PREVIEW_ERROR;
