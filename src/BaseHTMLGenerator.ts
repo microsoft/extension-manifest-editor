@@ -19,7 +19,7 @@ export default class BaseHtmlGenerator {
 
     constructor() {
         let extensionPath: string = vscode.extensions.getExtension(ExtensionConstants.EXTENSION_ID).extensionPath;
-        this.cssPath = `${extensionPath}/${FilePaths.CSS_path}`;
+        this.cssPath = vscode.Uri.file(`${extensionPath}/${FilePaths.CSS_path}`).with({ scheme: 'vscode-resource' }).toString();
         this.htmlPath = `${extensionPath}/${FilePaths.HTML_PATH}`;
     }
 
@@ -38,7 +38,7 @@ export default class BaseHtmlGenerator {
 
     private readHTML(): Promise<string> {
         let self = this;
-        return new Promise(function (resolve, reject) {
+        return new Promise<string>(function (resolve, reject) {
             fs.readFile(self.htmlPath, function (err, data) {
                 if (err) {
                     return reject(err);
@@ -118,7 +118,8 @@ export default class BaseHtmlGenerator {
     private getItemImage(): string {
         let self = this;
         if (self.packageData.imagePath) {
-            return `<img alt = "Invalid Image Path" src= "${self.packageData.imagePath}"  >`;
+            const src = vscode.Uri.parse(self.packageData.imagePath).with({ scheme: 'vscode-resource' });
+            return `<img alt = "Invalid Image Path" src= "${src}"  >`;
         }
         return "";
     }

@@ -9,7 +9,6 @@ import {IDataProvider} from './IDataProvider'
 import DataProviderVSC from './DataProviderVSC'
 import DataProviderVSTS from './DataProviderVSTS'
 import {IHtmlGenerator} from './IHtmlGenerator'
-import {IPreviewManager} from './IPreviewManager'
 import * as Constants from './Constants'
 import Utilities from './Utilities'
 
@@ -21,12 +20,11 @@ const marked = require('markdown-it')({
 const fs = require('fs');
 
 
-export default class BasePreviewManager implements vscode.TextDocumentContentProvider, IPreviewManager {
+export default class BasePreviewManager {
 
     public packageData: IDataProvider;
     public markdownHtmlOutput: string;
     protected rootPath: string;
-    private _onDidChange: vscode.EventEmitter<vscode.Uri>;
     public oldPreview: string;
     private oldJSON: string;
     public HTMLGenerator: IHtmlGenerator;
@@ -34,14 +32,13 @@ export default class BasePreviewManager implements vscode.TextDocumentContentPro
 
     constructor() {
         this.rootPath = vscode.workspace.rootPath;
-        this._onDidChange = new vscode.EventEmitter<vscode.Uri>();
         this.oldPreview = "";
         this.oldJSON = "";
         this.utilities = new Utilities();
 
     }
 
-    public provideTextDocumentContent(uri: vscode.Uri): Promise<string> {
+    public getWebviewContent() {
         let self = this;
         return new Promise<string>(function (resolve, reject) {
             resolve(self.generatePreview())
@@ -50,16 +47,7 @@ export default class BasePreviewManager implements vscode.TextDocumentContentPro
             return data;
         }).catch(() => {
             return self.oldPreview;
-        })
-
-    }
-
-    public update(uri: vscode.Uri) {
-        this._onDidChange.fire(uri);
-    }
-
-    get onDidChange(): vscode.Event<vscode.Uri> {
-        return this._onDidChange.event;
+        });
     }
 
     public generatePreview(): Promise<string> {
