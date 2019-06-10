@@ -34,7 +34,9 @@ export default class PreviewManagerController {
                 default:
                     break;
             }
-            this.previewManager.generatePreview().then(data => this.webview.html = data);
+            new Promise<string>((resolve, reject) => {
+                resolve(this.previewManager.generatePreview());
+            }).then(data => this.webview.html = data);
             // subscribe to selection change event
             let subscriptions: vscode.Disposable[] = [];
             vscode.window.onDidChangeTextEditorSelection(this.onEvent, this, subscriptions)
@@ -48,7 +50,9 @@ export default class PreviewManagerController {
     }
 
     public onEvent() {
-        this.previewManager.getWebviewContent().then(data => this.webview.html = data);
+        new Promise<string>((resolve, reject) => {
+            resolve(this.previewManager.getWebviewContent());
+        }).then(data => this.webview.html = data);
     }
 
 }

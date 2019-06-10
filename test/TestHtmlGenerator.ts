@@ -22,7 +22,7 @@ export default function testHtmlGenerator(HTMLGenerator, expectedHTML: string) {
     context("constructor", function () {
         it("should assign resource paths", function () {
             let extensionPath: string = vscode.extensions.getExtension(Constants.ExtensionConstants.EXTENSION_ID).extensionPath;
-            expect(htmlGenerator.cssPath).to.equal(`${extensionPath}/${Constants.FilePaths.CSS_path}`);
+            expect(htmlGenerator.cssPath).to.equal(vscode.Uri.file(`${extensionPath}/${Constants.FilePaths.CSS_path}`).with({ scheme: 'vscode-resource' }).toString());
             expect(htmlGenerator.htmlPath).to.equal(`${extensionPath}/${Constants.FilePaths.HTML_PATH}`);
         })
     })
