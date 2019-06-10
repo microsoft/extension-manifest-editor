@@ -15,16 +15,18 @@ describe("PreviewManagerController", function () {
 
     class dummyPreviewManager {
         generatePreview() { };
-        update() { };
+        getWebviewContent() { }
     }
     class Utilities {
         checkExtensionType() { };
     }
     let previewManagerController;
     let utilities;
+    let webview;
 
     beforeEach(function () {
         utilities = new Utilities();
+        webview = vscode.window.createWebviewPanel('extension', 'Extension Manifest', 1, {}).webview;
     })
     context("constructor", function () {
 
@@ -37,7 +39,7 @@ describe("PreviewManagerController", function () {
 
             let previewManagerVSCStub = sinon.createStubInstance(dummyPreviewManager);
             let previewManagerVSTSStub = this.stub();
-            previewManagerController = new PreviewManagerController(utilities, previewManagerVSCStub, previewManagerVSTSStub);
+            previewManagerController = new PreviewManagerController(webview, utilities, previewManagerVSCStub, previewManagerVSTSStub);
 
             sinon.assert.calledOnce(checkExtensionTypeStub);
             sinon.assert.calledOnce(previewManagerVSCStub.generatePreview);
@@ -53,7 +55,7 @@ describe("PreviewManagerController", function () {
 
             let previewManagerVSCStub = this.stub();
             let previewManagerVSTSStub = sinon.createStubInstance(dummyPreviewManager);
-            previewManagerController = new PreviewManagerController(utilities, previewManagerVSCStub, previewManagerVSTSStub);
+            previewManagerController = new PreviewManagerController(webview, utilities, previewManagerVSCStub, previewManagerVSTSStub);
 
             sinon.assert.calledOnce(checkExtensionTypeStub);
             sinon.assert.calledOnce(previewManagerVSTSStub.generatePreview);
@@ -67,7 +69,7 @@ describe("PreviewManagerController", function () {
             })
 
             let previewManagerStub = sinon.createStubInstance(dummyPreviewManager);
-            previewManagerController = new PreviewManagerController(utilities, previewManagerStub, previewManagerStub);
+            previewManagerController = new PreviewManagerController(webview, utilities, previewManagerStub, previewManagerStub);
 
             sinon.assert.calledOnce(checkExtensionTypeStub);
             sinon.assert.notCalled(previewManagerStub.generatePreview);
@@ -76,7 +78,7 @@ describe("PreviewManagerController", function () {
     })
 
     context("onEvent", function () {
-        it("should call update method of previewManager with correct parameters", sinon.test(function () {
+        it("should call generatePreview method and getWebviewContent method of previewManager", sinon.test(function () {
             let checkExtensionTypeStub = this.stub(utilities, "checkExtensionType", function () {
                 ExtensionConstants.EXTENSION_TYPE = ExtensionConstants.VSC_EXTENSION;
                 return true;
@@ -84,14 +86,13 @@ describe("PreviewManagerController", function () {
 
             let previewManagerStub = sinon.createStubInstance(dummyPreviewManager);
 
-            previewManagerController = new PreviewManagerController(utilities, previewManagerStub, previewManagerStub);
+            previewManagerController = new PreviewManagerController(webview, utilities, previewManagerStub, previewManagerStub);
             previewManagerController.onEvent();
 
             sinon.assert.calledOnce(checkExtensionTypeStub);
             expect(previewManagerController.previewManager).to.equal(previewManagerStub);
-            sinon.assert.calledOnce(previewManagerStub.generatePreview);
-            sinon.assert.calledOnce(previewManagerStub.update);
-            sinon.assert.calledWith(previewManagerStub.update,vscode.Uri.parse(ExtensionConstants.PREVIEW_URI))
+            sinon.assert.called(previewManagerStub.generatePreview);
+            sinon.assert.calledOnce(previewManagerStub.getWebviewContent);
             
         }))
     })

@@ -18,8 +18,10 @@ export default class PreviewManagerController {
     previewManager: BasePreviewManager;
     private disposable: vscode.Disposable;
     utilities: Utilities;
+    webview: vscode.Webview;
 
-    constructor(utilities?: Utilities, previewManagerVSC?: PreviewManagerVSC, previewManagerVSTS?: PreviewManagerVSTS) {
+    constructor(webview: vscode.Webview, utilities?: Utilities, previewManagerVSC?: PreviewManagerVSC, previewManagerVSTS?: PreviewManagerVSTS) {
+        this.webview = webview;
         this.utilities = utilities && utilities || new Utilities();
         if (this.utilities.checkExtensionType()) {
             switch (ExtensionConstants.EXTENSION_TYPE) {
@@ -32,7 +34,9 @@ export default class PreviewManagerController {
                 default:
                     break;
             }
-            this.previewManager.generatePreview();
+            new Promise<string>((resolve, reject) => {
+                resolve(this.previewManager.generatePreview());
+            }).then(data => this.webview.html = data);
             // subscribe to selection change event
             let subscriptions: vscode.Disposable[] = [];
             vscode.window.onDidChangeTextEditorSelection(this.onEvent, this, subscriptions)
@@ -46,7 +50,9 @@ export default class PreviewManagerController {
     }
 
     public onEvent() {
-        this.previewManager.update(vscode.Uri.parse(ExtensionConstants.PREVIEW_URI));
+        new Promise<string>((resolve, reject) => {
+            resolve(this.previewManager.getWebviewContent());
+        }).then(data => this.webview.html = data);
     }
 
 }

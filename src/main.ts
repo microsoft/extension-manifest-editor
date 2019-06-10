@@ -11,15 +11,14 @@ import {ExtensionConstants, ErrorMessages} from './Constants'
 
 export function activate(context: vscode.ExtensionContext) {
 
-    let previewUri = vscode.Uri.parse(ExtensionConstants.PREVIEW_URI);
     let disposableSidePreview = vscode.commands.registerCommand('extension.generateSidePreview', () => {
 
-        init(vscode.ViewColumn.Two, context, previewUri);
+        init(vscode.ViewColumn.Two, context);
 
     });
     let disposableStandalonePreview = vscode.commands.registerCommand('extension.generateStandalonePreview', () => {
 
-        init(vscode.ViewColumn.One, context, previewUri);
+        init(vscode.ViewColumn.One, context);
 
     });
     context.subscriptions.push(disposableSidePreview);
@@ -31,15 +30,13 @@ export function deactivate() {
     
 }
 
-function init(viewColumn: number, context: vscode.ExtensionContext, previewUri: vscode.Uri) {
+function init(viewColumn: number, context: vscode.ExtensionContext) {
     let utilities = new Utilities();
     let proceed = utilities.checkFileType();
     if (proceed) {
-        let previewManagerController = new PreviewManagerController();
-        context.subscriptions.push(previewManagerController);
-        let registration = vscode.workspace.registerTextDocumentContentProvider('details-preview', previewManagerController.previewManager);
-        return vscode.commands.executeCommand('vscode.previewHtml', previewUri, viewColumn).then((success) => {
-        });
+        let previewManagerController = new PreviewManagerController(
+            vscode.window.createWebviewPanel('extension', 'Extension Manifest', viewColumn, {}).webview
+        );
     }
 }
 
