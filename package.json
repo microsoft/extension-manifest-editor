@@ -65,7 +65,7 @@
     },
     "devDependencies": {
         "typescript": "^1.8.5",
-        "vscode": "^0.11.0",
+        "vscode": "^1.1.37",
         "chai": "^3.5.0",
         "sinon": "^1.17.4"
     },
